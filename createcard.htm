@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>MONTY's Postcard Service</title>
+</head>
+
+<body bgcolor="#66CCFF">
+<p align="center">
+<table>
+<tbody>
+<tr>
+<TD valign="top">
+<TABLE>
+  <TBODY>
+    <TR align="left" valign="top">
+      <TD>
+        <TABLE bgcolor="#c0c0c0" border="4" bordercolordark="#000000" bordercolorlight="#666666">
+          <TBODY>
+            <TR>
+              <TD align="middle" height="452" valign="center" width="337">
+                <TABLE>
+                  <TBODY>
+                    <TR>
+                      <TD>
+                        <IMG height="412" src="{mpPicture}" width="275"></A>
+                      </TD>
+                    </TR>
+                  </TBODY>
+                </TABLE>
+              </TD>
+            </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    <TR>
+      <TD>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</TD>
+</tr>
+</tbody>
+</table>
+
+<hr>
+<form action="{mpFormAction}" method=post>
+<input name="image" type="hidden" value="{mpPicture}">
+<table>
+<tr><td>Recievers name</td><td><input name="rname" type="text" value=""></td></tr>
+<tr><td>Recievers email</td><td><input name="rmail" type="text" value=""></td></tr>
+<tr><td>Senders name</td><td><input name="sname" type="text" value=""></td></tr>
+<tr><td>Senders email</td><td><input name="smail" type="text" value=""></td></tr>
+<tr> &nbsp;</tr>
+
+<tr><td>Message</td><td><textarea name="message" rows=10 cols=60 ></textarea></td></tr>
+</table>
+<p>
+<input type="submit" value="Send postcard"><input type="reset">
+</form>
+</body>
+</html>

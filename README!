@@ -1,0 +1,119 @@
+
+                                            
+INSTALLATION
+
+    Montys consist of these files
+
+    Python  
+        You need to have access to Python 1.5.2
+        
+    PIL     Python Imaging Library
+        Montys uses PIL to automatically create thumbnails. You need PIL 1.0 
+        or higher installed. NB! Depending on the kind of images you will handle
+        both the actual postcard image and the thumbnail. You may need to include 
+        GIF and/or JPEG support in PIL
+
+    HTMLgen 
+        Montys uses HTMLgen to create the HTML pages. You need HTMLgen 2.2
+        or higher
+        
+        
+    Montys Package         
+        __init__.py 
+        PServer.py      
+        CONST.PY
+
+    CGI         
+        Postcard.cgi [1]
+        Createcard.cgi 
+        Sendcard.cgi
+        
+    HTML templates
+        previewcard.html
+        createcard.html
+        postcard.html
+        thanks.html
+
+
+    install the package into one of the directories on the $PYTHONPATH into a 
+    subdirectory called Montys. The html-template files shall also be 
+    installed into this directory.
+    
+    e.g.
+        site-packages/Montys
+
+    The CGI files should be installed into the cgi-bin directory of your web 
+    account. Remember to change the first line so that it point to the actual 
+    directory where python is installed. You must also make the files 
+    executable!
+
+    Now you have to change all the constants that are defined in the CONST.PY 
+    file
+
+    
+    At last create a link which points to the 'Postcard.cgi'
+
+                                    -------------
+                                    
+Thumbnails 
+    Montys will automatically create a thumbnail of the image. This thumbnail 
+    will be saved in a subdirectory called '.thumbnail'. Having thumbnails will 
+    speed up the showing of the images by many 100% and will not take much space. 
+    It may cause some distortion of the picture but usually it will be good enough
+    for selecting.
+
+
+HTML Template 
+
+Montys is using HTMLgen to create the html pages. This means that 
+you can create the templates using your standard and using some HTML-
+application, i.e. Frontpage, Dreamweawer,etc. The only thing Montys cares about 
+is the name of the html-page and a couple of tags.
+
+    The first HTML page is called 'previewcard.html'. 
+
+    This will show a table of all the images that is in the start directory. 
+    if there are any subdirectories it also will show them as a image grouping 
+    or category. You have to place two tags on this page:
+
+        {mpDirtable}            Will be replaced with a table of categories                                 
+                                Each Category is also a link and will take 
+                                the user to the category,showing all 
+                                subcategories and images.
+
+        {mpPreviewtable}        Will be replaced with a table of 
+                                images/Thumbnails The thumbnail is 
+                                linked to Createcard.py, which will 
+                                ask for recipient and sender and 
+                                message and such
+
+
+
+    'createcard.html'
+
+    This page will show the image (not the thumbnail) and should have a form for 
+    filling out the name and email addresses of the sender and receiver. There 
+    should also be a text field for the message.
+    
+    {mpPicture}                 The image
+    
+    {mpFormAction}              The form action. NB! The method MUST be POST!
+    
+    The fields in the form MUST be named:
+    <input name="image" type="hidden" value="{mpPicture}">  #so the next cgi know which image
+    <input name="rname" type="text" value="">               #receiver name
+    <input name="rmail" type="text" value="">               #receiver email address
+    <input name="sname" type="text" value="">               #sender name
+    <input name="smail" type="text" value="">               #sender email address
+    <textarea name="message" rows=10 cols=60 >              #Message
+
+                                
+----------------------------------------------------------------------------- 
+footnote
+
+    [1] I don't know why but if you're using Xitami on Windows you need to     
+        rename these files from .CGI to .py! Otherwise Xitami will not recognize 
+        them as CGI applications. if you know how to get this to work please let 
+        me know!!
+
+
